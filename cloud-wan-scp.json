@@ -1,0 +1,76 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "BlockComputeServices",
+            "Effect": "Deny",
+            "Action": [
+                "apigateway:*",
+                "apprunner:*",
+                "cloudfront:*",
+                "codebuild:*",
+                "ecs:*",
+                "eks:*",
+                "elasticbeanstalk:*",
+                "elasticmapreduce:*",
+                "emr-serverless:*",
+                "emr-containers:*",
+                "es:*",
+                "imagebuilder:*",
+                "lambda:*",
+                "lightsail:*",
+                "neptune-db:*",
+                "outposts:*",
+                "rds:*",
+                "redshift:*",
+                "serverlessrepo:*",
+                "simspaceweaver:*",
+                "ec2:AssociateAddress",
+                "ec2:runScheduledInstances",
+                "ec2:RunInstances",
+                "elasticloadbalancing:*"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "BlockNetworkServices",
+            "Effect": "Deny",
+            "Action": [
+                "ec2:AcceptVpcEndpointConnections",
+                "ec2:AcceptTransitGatewayVpcAttachment",
+                "ec2:AcceptVpcPeeringConnection",
+                "ec2:AttachInternetGateway",
+                "ec2:CreateNatGateway",
+                "ec2:CreateInternetGateway",
+                "ec2:CreateDefaultVpc",
+                "ec2:CreateCustomerGateway",
+                "ec2:CreatePublicIpv4Pool",
+                "ec2:CreateNetworkInterface",
+                "ec2:CreateEgressOnlyInternetGateway",
+                "ec2:EnableAddressTransfer",
+                "ec2:EnableVpcClassicLink",
+                "ec2:ModifyVpcEndpointServicePermissions"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "BlockVPNServices",
+            "Effect": "Deny",
+            "Action": [
+                "ec2:AssociateClientVpnTargetNetwork",
+                "ec2:CreateInternetGateway",
+                "ec2:CreateVpcEndpoint",
+                "ec2:CreateVpnConnection"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "BlockOpenShiftAndOtherMarketPlaceServices",
+            "Effect": "Deny",
+            "Action": [
+                "aws-marketplace:*"
+            ],
+            "Resource": "*"
+        }
+    ]
+}

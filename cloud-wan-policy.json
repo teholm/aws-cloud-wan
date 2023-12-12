@@ -1,0 +1,87 @@
+{
+  "version": "2021.12",
+  "core-network-configuration": {
+    "vpn-ecmp-support": true,
+    "asn-ranges": [
+      "4200000401-4200000404"
+    ],
+    "edge-locations": [
+      {
+        "location": "us-east-1",
+        "asn": 4200000401
+      },
+      {
+        "location": "us-east-2",
+        "asn": 4200000402
+      },
+      {
+        "location": "eu-central-1",
+        "asn": 4200000403
+      }
+    ]
+  },
+  "segments": [
+    {
+      "name": "vnpower",
+      "edge-locations": [
+        "us-east-1",
+        "us-east-2",
+        "eu-central-1"
+      ],
+      "require-attachment-acceptance": true
+    },
+    {
+      "name": "vnrenewables",
+      "edge-locations": [
+        "us-east-1",
+        "us-east-2",
+        "eu-central-1"
+      ],
+      "require-attachment-acceptance": true
+    }
+  ],
+  "attachment-policies": [
+    {
+      "rule-number": 100,
+      "condition-logic": "and",
+      "conditions": [
+        {
+          "type": "attachment-type",
+          "operator": "equals",
+          "value": "vpc"
+        },
+        {
+          "type": "tag-value",
+          "operator": "equals",
+          "key": "segment",
+          "value": "gp"
+        }
+      ],
+      "action": {
+        "association-method": "constant",
+        "segment": "vnpower"
+      }
+    },
+    {
+      "rule-number": 111,
+      "condition-logic": "and",
+      "conditions": [
+        {
+          "type": "attachment-type",
+          "operator": "equals",
+          "value": "vpc"
+        },
+        {
+          "type": "tag-value",
+          "operator": "equals",
+          "key": "segment",
+          "value": "ren"
+        }
+      ],
+      "action": {
+        "association-method": "constant",
+        "segment": "vnrenewables"
+      }
+    }
+  ]
+}
