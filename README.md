@@ -7,7 +7,15 @@ The example code in this repository contains IaC code that deploys the architect
 
 ## Prerequisites
 -   An AWS account that has an IAM user with the necessary permissions for deployment.
--   Install Terraform
+-   Install [Terraform](https://developer.hashicorp.com/terraform/install). Helpful [Terraform cheatsheet](https://k21academy.com/terraform-iac/terraform-cheat-sheet).  
+
+## Getting started
+To deploy:  
+'terraform init'  
+'terraform apply'  
+
+**When done with the workshop**  
+'terraform destroy'  
 
 
 ## Notice
